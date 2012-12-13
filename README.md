@@ -27,7 +27,7 @@ Inside your procfile, you can use PORT, PID_FILE and RAILS_ENV in your process c
     web: bundle exec puma -p $PORT --pidfile $PID_FILE
     worker: bundle exec rake resque:work PIDFILE=$PID_FILE
 
-Monit will fork the command in a shell for the specified user and will redirect each output to ./log/<app>-<process>.log
+Monit will fork the command in a shell for the specified user and will redirect each output to ./<target>/<app>-<process>.log
 
 Just include the directory ./monit (or whatever you chose as a target) in your global monitrc and do a 'monit reload'
 

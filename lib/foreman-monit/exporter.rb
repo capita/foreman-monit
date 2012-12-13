@@ -36,11 +36,11 @@ module ForemanMonit
     end
 
     def pid_file(name)
-      File.expand_path(File.join(Dir.getwd, '../shared/pids', "#{@app}-#{name}.pid"))
+      File.expand_path(File.join(target_dir, "#{@app}-#{name}.pid"))
     end
 
     def log_file(name)
-      File.expand_path(File.join(Dir.getwd, '/log', "#{@app}-#{name}.log"))
+      File.expand_path(File.join(target_dir, '/log', "#{@app}-#{name}.log"))
     end
 
     def rails_env
