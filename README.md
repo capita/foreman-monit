@@ -6,7 +6,7 @@ Small command-line too to export from Procfile to monit control files
 
 Add this line to your application's Gemfile:
 
-    gem 'foreman-monit'
+    gem 'foreman-monit', github: 'capita/foreman-monit'
 
 And then execute:
 
