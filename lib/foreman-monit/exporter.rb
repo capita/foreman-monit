@@ -17,7 +17,7 @@ module ForemanMonit
     def run!
       Dir.mkdir(target_dir) unless File.exist?(target_dir)
       @engine.each_process do |name, process|
-        file_name = File.join(@target, "#{@app}-#{name}")
+        file_name = File.join(@target, "#{@app}-#{name}.conf")
         File.open(file_name, 'w') { |f| f.write ERB.new(File.read(File.expand_path("../../../templates/monitrc.erb", __FILE__))).result(binding) }
       end
     end

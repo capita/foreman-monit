@@ -29,7 +29,7 @@ Inside your procfile, you can use PORT, PID_FILE and RAILS_ENV in your process c
 
 Monit will fork the command in a shell for the specified user and will redirect each output to ./<target>/<app>-<process>.log
 
-Just include the directory ./monit (or whatever you chose as a target) in your global monitrc and do a 'monit reload'
+Just include the directory ./monit/*.conf (or whatever you chose as a target) in your global monitrc and do a 'monit reload'
 
 You can start or stop the app's jobs by issuing
 
