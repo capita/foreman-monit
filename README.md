@@ -15,7 +15,7 @@ And then execute:
 ## Usage
 
 'foreman-monit export' outputs a monit control file for every process listed in the given Procfile. foreman-monit
-has to be called from the projects root directory and outputs to ./monit per default. It is most useful in deployment
+has to be called from the projects root directory and outputs to /tmp/foreman-monit per default. It is most useful in deployment
 via Capistrano to automate restarting of processes or changing the processes configuration/definition after or inside
 your deployment routine
 

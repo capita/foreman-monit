@@ -15,7 +15,7 @@ module ForemanMonit
     end
 
     def run!
-      Dir.mkdir(target_dir) unless File.exist?(target_dir)
+      Dir.mkdir(@target) unless File.exist?(@target)
       @engine.each_process do |name, process|
         file_name = File.join(@target, "#{@app}-#{name}.conf")
         File.open(file_name, 'w') { |f| f.write ERB.new(File.read(File.expand_path("../../../templates/monitrc.erb", __FILE__))).result(binding) }
@@ -36,11 +36,11 @@ module ForemanMonit
     end
 
     def pid_file(name)
-      File.expand_path(File.join(target_dir, "#{@app}-#{name}.pid"))
+      File.expand_path(File.join(@target, "#{@app}-#{name}.pid"))
     end
 
     def log_file(name)
-      File.expand_path(File.join(target_dir, "#{@app}-#{name}.log"))
+      File.expand_path(File.join(@target, "#{@app}-#{name}.log"))
     end
 
     def rails_env
@@ -48,10 +48,6 @@ module ForemanMonit
     end
 
     private
-
-    def target_dir
-      "#{base_dir}/#{@target}"
-    end
 
     def load_env
       default_env = File.join(@engine.root, ".env")
