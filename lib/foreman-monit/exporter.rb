@@ -40,7 +40,7 @@ module ForemanMonit
     end
 
     def log_file(name)
-      File.expand_path(File.join(target_dir, '/log', "#{@app}-#{name}.log"))
+      File.expand_path(File.join(target_dir, "#{@app}-#{name}.log"))
     end
 
     def rails_env
