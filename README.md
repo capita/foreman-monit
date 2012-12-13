@@ -24,8 +24,8 @@ to use an a general application-indentifier to name control files and groups acc
 
 Inside your procfile, you can use PORT, PID_FILE and RAILS_ENV in your process command, e.g.
 
-  web: bundle exec puma -p $PORT --pidfile $PID_FILE
-  worker: bundle exec rake resque:work PIDFILE=$PID_FILE
+    web: bundle exec puma -p $PORT --pidfile $PID_FILE
+    worker: bundle exec rake resque:work PIDFILE=$PID_FILE
 
 Monit will fork the command in a shell for the specified user and will redirect each output to ./log/<app>-<process>.log
 
@@ -33,19 +33,19 @@ Just include the directory ./monit (or whatever you chose as a target) in your g
 
 You can start or stop the app's jobs by issuing
 
-  monit -g <app> start
-  monit -g <app> stop
+    monit -g <app> start
+    monit -g <app> stop
 
 or
 
-  monit -g <app> restart
+    monit -g <app> restart
 
 which will typically be somewhere in your 'cap:restart' definition in your Capfile ,e.g.
 
-  monit stop -g <app>
-  foreman-monit export --app <app> --user <user> --env production
-  monit reload
-  monit start -g <app>
+    monit stop -g <app>
+    foreman-monit export --app <app> --user <user> --env production
+    monit reload
+    monit start -g <app>
 
 ## Contributing
 
