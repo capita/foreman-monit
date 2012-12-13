@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require File.join(File.dirname(__FILE__), '../lib/foreman_monit')
+
+begin
+  ForemanMonit::CLI.start
+rescue => e
+  puts e.backtrace
+  exit 1
+end
