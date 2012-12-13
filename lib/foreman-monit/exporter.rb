@@ -1,4 +1,5 @@
 require "foreman/engine"
+require 'fileutils'
 
 module ForemanMonit
   class Exporter
@@ -16,7 +17,7 @@ module ForemanMonit
 
     def run!
       Dir.mkdir(@target) unless File.exist?(@target)
-      File.delete("#{@target}/*.conf")
+      FileUtils.rm Dir.glob("#{@target}/*.conf")
       @engine.each_process do |name, process|
         file_name = File.join(@target, "#{@app}-#{name}.conf")
         File.open(file_name, 'w') { |f| f.write ERB.new(File.read(File.expand_path("../../../templates/monitrc.erb", __FILE__))).result(binding) }
