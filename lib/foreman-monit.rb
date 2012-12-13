@@ -1,7 +1,10 @@
-require "foreman-monit/version"
+require 'foreman-monit/version'
+require 'foreman-monit/exporter'
+require 'foreman-monit/cli'
 
-module Foreman
-  module Monit
-    # Your code goes here...
+module ForemanMonit
+  def self.export_to_monitrc(options)
+    exporter = ForemanMonit::Exporter.new(options)
+    exporter.run!
   end
 end
