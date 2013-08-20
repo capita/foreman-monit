@@ -12,6 +12,7 @@ module ForemanMonit
     method_option 'user', :type => :string, :required => true
     method_option 'target', :type => :string, :default => '/tmp/foreman-monit'
     method_option 'env', :type => :string, :required => true
+    method_option 'chruby', :type => :string, :required => false
 
     desc 'export', 'Exports shell-wrapper in ./bin and outputs a monit control file for each process in Procfile'
     def export

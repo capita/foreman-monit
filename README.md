@@ -19,7 +19,7 @@ has to be called from the projects root directory and outputs to /tmp/foreman-mo
 via Capistrano to automate restarting of processes or changing the processes configuration/definition after or inside
 your deployment routine
 
-You have to provide --user, --env and --app to specify the user that will be running the processes, the RAILS_ENV
+You have to provide --user, --env, [--chruby] and --app to specify the user that will be running the processes, the RAILS_ENV
 to use an a general application-indentifier to name control files and groups accordingly.
 
 Inside your procfile, you can use PORT, PID_FILE and RAILS_ENV in your process command, e.g.

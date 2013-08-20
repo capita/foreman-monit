@@ -1,5 +1,5 @@
 check process <%= @app %>-<%= name %> with pidfile <%= pid_file(name) %>
-  start program "/bin/su <%= @user %> -l -c 'cd <%= base_dir %>;export PORT=<%= port %>; export PID_FILE=<%= pid_file(name) %>; export RAILS_ENV=<%= rails_env %>; <%= process.command %> >> <%= log_file(name) %> 2>&1 &'" with timeout 180 seconds
+  start program "/bin/su <%= @user %> -l -c '<%= chruby_init %> cd <%= base_dir %>;export PORT=<%= port %>; export PID_FILE=<%= pid_file(name) %>; export RAILS_ENV=<%= rails_env %>; <%= process.command %> >> <%= log_file(name) %> 2>&1 &'" with timeout 180 seconds
   stop program = "/bin/bash -c 'kill -SIGKILL `cat <%= pid_file(name) %>` && rm <%= pid_file(name) %>'"
   group <%= @app %>
 

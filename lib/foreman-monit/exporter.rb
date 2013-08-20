@@ -8,6 +8,7 @@ module ForemanMonit
       @user = options[:user]
       @target = options[:target]
       @env = options[:env]
+      @chruby = options[:chruby]
 
       @engine = Foreman::Engine.new
       load_procfile
@@ -31,6 +32,14 @@ module ForemanMonit
     def port
       @port += 1
       @port-1
+    end
+
+    def chruby_init
+      if @chruby
+        "chruby #{@chruby} &&"
+      else
+        ''
+      end
     end
 
     def base_dir
