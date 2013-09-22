@@ -10,6 +10,7 @@ module ForemanMonit
 
     method_option 'app', :type => :string, :required => true
     method_option 'user', :type => :string, :required => true
+    method_option 'procfile', :type => :string, :default => 'Procfile'
     method_option 'target', :type => :string, :default => '/tmp/foreman-monit'
     method_option 'env', :type => :string, :required => true
     method_option 'chruby', :type => :string, :required => false

@@ -1,0 +1,3 @@
+# THIS IS ONLY USED FOR RSPEC!!!
+web: bin/puma -p $PORT --pidfile $PID_FILE -t 4:32
+worker: bin/rake resque:work PIDFILE=$PID_FILE

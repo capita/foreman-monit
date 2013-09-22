@@ -1,4 +1,4 @@
-require "foreman/engine"
+require 'foreman/engine'
 require 'fileutils'
 
 module ForemanMonit
@@ -9,6 +9,10 @@ module ForemanMonit
       @target = options[:target]
       @env = options[:env]
       @chruby = options[:chruby]
+      @procfile = options[:procfile]
+
+      @su = which_su
+      @bash = which_bash
 
       @engine = Foreman::Engine.new
       load_procfile
@@ -21,7 +25,7 @@ module ForemanMonit
       FileUtils.rm Dir.glob("#{@target}/*.conf")
       @engine.each_process do |name, process|
         file_name = File.join(@target, "#{@app}-#{name}.conf")
-        File.open(file_name, 'w') { |f| f.write ERB.new(File.read(File.expand_path("../../../templates/monitrc.erb", __FILE__))).result(binding) }
+        File.open(file_name, 'w') { |f| f.write ERB.new(File.read(File.expand_path('../../../templates/monitrc.erb', __FILE__))).result(binding) }
       end
     end
 
@@ -60,13 +64,21 @@ module ForemanMonit
 
     private
 
+    def which_su
+      `which su`.chomp
+    end
+
+    def which_bash
+      `which bash`.chomp
+    end
+
     def load_env
-      default_env = File.join(@engine.root, ".env")
+      default_env = File.join(@engine.root, '.env')
       @engine.load_env default_env if File.exists?(default_env)
     end
 
     def load_procfile
-      @engine.load_procfile('Procfile')
+      @engine.load_procfile(@procfile)
     end
   end
 end

@@ -1,5 +1,8 @@
 # Foreman::Monit
 
+# TODO: RubyGems
+# TODO: Complete options
+
 Small command-line too to export from Procfile to monit control files
 
 ## Installation
