@@ -1,8 +1,5 @@
 # Foreman::Monit
 
-# TODO: RubyGems
-# TODO: Complete options
-
 Small command-line too to export from Procfile to monit control files
 
 ## Installation
@@ -10,6 +7,8 @@ Small command-line too to export from Procfile to monit control files
 Add this line to your application's Gemfile:
 
     gem 'foreman-monit', github: 'capita/foreman-monit'
+    or
+    gem 'foreman-monit, '~> v1.0.1'
 
 And then execute:
 
@@ -22,8 +21,10 @@ has to be called from the projects root directory and outputs to /tmp/foreman-mo
 via Capistrano to automate restarting of processes or changing the processes configuration/definition after or inside
 your deployment routine
 
-You have to provide --user, --env, [--chruby] and --app to specify the user that will be running the processes, the RAILS_ENV
-to use an a general application-indentifier to name control files and groups accordingly.
+You have to provide --user, --env and --app to specify the user that will be running the processes, the RAILS_ENV
+to use an a general application-indentifier to name control files and groups accordingly. Additional parameters
+are --target, which specifies a non-default directory to store the control files in, and --procfile if your Procfile
+resides outside of the directory you call foreman-monit from.
 
 Inside your procfile, you can use PORT, PID_FILE and RAILS_ENV in your process command, e.g.
 
@@ -32,7 +33,13 @@ Inside your procfile, you can use PORT, PID_FILE and RAILS_ENV in your process c
 
 Monit will fork the command in a shell for the specified user and will redirect each output to ./<target>/<app>-<process>.log
 
-Just include the directory ./monit/*.conf (or whatever you chose as a target) in your global monitrc and do a 'monit reload'
+Include the newly exported control files in your monitrc (which normally resides in /etc/monit/monitrc or /etc/monit) with
+a
+    include /tmp/foreman-monit/*.conf
+    or
+    include /your/path/to/foreman-monit/*.conf
+
+and simply reload/restart monit with /etc/init.d/monit reload (or restart)
 
 You can start or stop the app's jobs by issuing
 
