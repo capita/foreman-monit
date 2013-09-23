@@ -31,7 +31,7 @@ describe ForemanMonit::Exporter do
 
   describe '#info' do
     it 'shows the Procfiles entries' do
-      pending 'Either stub out Kernel.puts or make STDOUT go to a local string for comparison'
+      expect { exporter.info }.to write('Foreman').to(:output)
     end
 
   end
