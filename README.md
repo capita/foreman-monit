@@ -57,6 +57,21 @@ which will typically be somewhere in your 'cap:restart' definition in your Capfi
     monit reload
     monit start -g <app>
 
+## Exporter options
+
+Required:
+
+- `--app`: Name of the app in your `Procfile` (e.g. `web`)
+- `--env`: Rails environment to pass as `RAILS_ENV` (e.g. `production`)
+- `--user`: Username that will run the process
+
+Optional:
+
+- `--chruby`: Calls `chruby` to switch to the given ruby version
+- `--procfile`: Location of the `Procfile`
+- `--target`: Directory to put the config file, defaults to `/tmp/foreman-monit`
+
+
 ## Contributing
 
 1. Fork it
