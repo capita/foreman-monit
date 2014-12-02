@@ -8,7 +8,7 @@ Add this line to your application's Gemfile:
 
     gem 'foreman-monit', github: 'capita/foreman-monit'
     or
-    gem 'foreman-monit, '~> v1.0.1'
+    gem 'foreman-monit, '~> v1.0.4'
 
 And then execute:
 
@@ -61,7 +61,7 @@ which will typically be somewhere in your 'cap:restart' definition in your Capfi
 
 Required:
 
-- `--app`: Name of the app in your `Procfile` (e.g. `web`)
+- `--app`: Name of the app in your `Procfile` (e.g. `shop`)
 - `--env`: Rails environment to pass as `RAILS_ENV` (e.g. `production`)
 - `--user`: Username that will run the process
 
