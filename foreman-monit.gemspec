@@ -6,8 +6,8 @@ require 'foreman-monit/version'
 Gem::Specification.new do |gem|
   gem.name          = 'foreman-monit'
   gem.version       = Foreman::Monit::VERSION
-  gem.authors       = ['Sebastian Georgi']
-  gem.email         = %w(sgeorgi@capita.de)
+  gem.authors       = ['Sebastian Georgi', 'Christian Sage']
+  gem.email         = %w(sgeorgi@sgeorgi.de csage@capita.de)
   gem.description   = %q{Outputs bash-wrapped launchers and control files for monit}
   gem.summary       = %q{...}
   gem.homepage      = ''

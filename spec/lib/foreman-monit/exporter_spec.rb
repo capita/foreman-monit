@@ -17,7 +17,7 @@ describe ForemanMonit::Exporter do
     before(:each) { exporter.run! }
 
     it 'creates the target directory' do
-      expect(Dir.exists?('../../tmp')).to be == true
+      expect(Dir.exists?('../../tmp')).to eq(true)
     end
 
     it 'exports the control file for Procfile#web' do
@@ -31,7 +31,7 @@ describe ForemanMonit::Exporter do
 
   describe '#info' do
     it 'shows the Procfiles entries' do
-      expect { exporter.info }.to write('Foreman').to(:output)
+      expect{ exporter.info }.to write('Foreman').to(:output)
     end
 
   end
